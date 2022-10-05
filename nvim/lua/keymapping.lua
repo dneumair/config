@@ -1,6 +1,5 @@
 -- leader key to space
-vim.g.mapleader = " "
-vim.g.mapleader = " "
+vim.keymap.set('', '<Space>', '<Leader>', { remap = true, silent = false })
 
 -- some basic remaps for german quertz keyboard
 vim.keymap.set({ 'n', 'v', 'x', 's' }, 'ö', ';', { noremap = true, silent = true })
@@ -24,10 +23,13 @@ vim.keymap.set( 'n', '<leader>D', vim.lsp.buf.type_definition, bufopts)
 vim.keymap.set( 'n', '<leader>rn', vim.lsp.buf.rename, bufopts)
 vim.keymap.set( 'n', 'gr', vim.lsp.buf.references, bufopts)
 vim.keymap.set( 'n','<leader>ca', vim.lsp.buf.code_action ,{noremap=true,silent=true} ) --
-vim.keymap.set( 'x','<leader>ca', vim.lsp.buf.range_code_action ,{noremap=true,silent=true} ) --
+vim.keymap.set( 'n','<leader>cf', vim.lsp.buf.format ,{noremap=true,silent=true} ) --
+
+vim.keymap.set( 'n','<leader>cc', vim.lsp.buf.format ,{noremap=true,silent=true} ) --
 
 -- easier than ctrl-w 
 vim.keymap.set( 'n','<leader>w', '<C-w>', {noremap=true,silent=false} )
+
 
 -- buffer mappings
 vim.keymap.set( 'n', '<leader>ff', ':buffers<CR>' ,{noremap=true,silent=true} )
@@ -60,4 +62,5 @@ vim.keymap.set( 'n', '<leader>sl',':SplitOpenRight ' ,{noremap=true,silent=false
 vim.keymap.set( 'n', '<leader>sh',':SplitOpenLeft ' ,{noremap=true,silent=false} )
 vim.keymap.set( 'n', '<leader>sk',':SplitOpenUp ' ,{noremap=true,silent=false} )
 vim.keymap.set( 'n', '<leader>sj',':SplitOpenDown ' ,{noremap=true,silent=false} )
+
 
