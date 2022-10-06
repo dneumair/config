@@ -12,6 +12,9 @@ vim.cmd("nnoremap <expr> j (v:count > 1 ? \"m'\" . v:count : '') . 'j'")
 -- disable highlight on ESC
 vim.keymap.set('n', '<ESC>', ':noh<CR>', { silent = true })
 
+-- escape should not move cursor
+vim.keymap.set('i', '<ESC>', '<ESC>`^', { silent = true })
+
 
 -- LSP mappings
 vim.keymap.set( 'n', 'gk', vim.lsp.buf.hover ,{noremap=true,silent=true} ) --

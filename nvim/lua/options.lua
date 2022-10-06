@@ -49,3 +49,5 @@ vim.opt.background = 'dark'
 vim.opt.wildoptions = 'pum'
 vim.opt.pumblend=5
 vim.opt.showtabline=2
+
+vim.opt.signcolumn='yes'
