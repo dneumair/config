@@ -18,13 +18,11 @@ cmp.setup({
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ["<Down>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s" }),
         ["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s" }),
+        ["<Tab>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s" }),
+        ["<S-Tab>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s" }),
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.abort(),
         ['<CR>'] = cmp.mapping.confirm({ 
-            select = true,
-            behavior = cmp.ConfirmBehavior.Replace,
-        }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-        ['<Tab>'] = cmp.mapping.confirm({ 
             select = true,
             behavior = cmp.ConfirmBehavior.Replace,
         }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
@@ -34,7 +32,6 @@ cmp.setup({
         { name = 'luasnip' }, -- For luasnip users.
         { name = 'nvim_lsp_signature_help' },
         { name = 'buffer' },
-    
     }),
 })
 
@@ -55,17 +52,18 @@ cmp.setup.filetype('gitcommit', {
 
 
 -- disable the fucking css snippets
-cmp.setup.filetype('css', {
-    sources = cmp.config.sources({
-        {name = 'buffer'},
-        {
-            name = 'nvim_lsp',
-            entry_filter = function(entry, ctx)
-                return require('cmp.types').lsp.CompletionItemKind[entry:get_kind()] ~= 'Snippet'
-            end,
-        },
-    }),
-})
+-- cmp.setup.filetype({'css'}, {
+--     sources = cmp.config.sources({
+--         {name = 'buffer'},
+--         {name = 'luasnip'},
+--         {
+--             name = 'nvim_lsp',
+--             entry_filter = function(entry, ctx)
+--                 return require('cmp.types').lsp.CompletionItemKind[entry:get_kind()] ~= 'Snippet'
+--             end,
+--         },
+--     }),
+-- })
 
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline({ '/', '?' }, {

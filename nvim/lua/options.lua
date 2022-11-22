@@ -51,3 +51,8 @@ vim.opt.pumblend=5
 vim.opt.showtabline=2
 
 vim.opt.signcolumn='yes'
+
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldcolumn='auto'
+vim.opt.foldlevel=99

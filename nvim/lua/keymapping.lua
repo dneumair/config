@@ -19,7 +19,10 @@ vim.keymap.set('i', '<ESC>', '<ESC>`^', { silent = true })
 -- LSP mappings
 vim.keymap.set( 'n', 'gk', vim.lsp.buf.hover ,{noremap=true,silent=true} ) --
 vim.keymap.set( 'n', 'gd', vim.lsp.buf.definition ,{noremap=true,silent=true} ) --
+vim.keymap.set( 'n', 'gn', vim.diagnostic.goto_next ,{noremap=true,silent=true} ) --
+vim.keymap.set( 'n', 'gp', vim.diagnostic.goto_prev ,{noremap=true,silent=true} ) --
 vim.keymap.set( 'n', 'gD', vim.lsp.buf.declaration ,{noremap=true,silent=true} ) --
+vim.keymap.set( 'n', 'gW', vim.lsp.buf.workspace_symbol ,{noremap=true,silent=true} ) --
 vim.keymap.set( 'n', 'gi', vim.lsp.buf.implementation ,{noremap=true,silent=true} ) --
 vim.keymap.set( 'n', '<C-k>', vim.lsp.buf.signature_help, { noremap = true, silent = true })
 vim.keymap.set( 'n', '<leader>D', vim.lsp.buf.type_definition, bufopts)
@@ -67,3 +70,15 @@ vim.keymap.set( 'n', '<leader>sk',':SplitOpenUp ' ,{noremap=true,silent=false} )
 vim.keymap.set( 'n', '<leader>sj',':SplitOpenDown ' ,{noremap=true,silent=false} )
 
 
+-- folds
+vim.keymap.set( {'n','v'}, '<leader>rl','zo' ,{noremap=true,silent=false} )
+vim.keymap.set( {'n','v'}, '<leader>rL','zO' ,{noremap=true,silent=false} )
+vim.keymap.set( {'n','v'}, '<leader>rh','zc' ,{noremap=true,silent=false} )
+vim.keymap.set( {'n','v'}, '<leader>rH','zC' ,{noremap=true,silent=false} )
+vim.keymap.set( {'n','v'}, '<leader>rk','zk' ,{noremap=true,silent=false} )
+vim.keymap.set( {'n','v'}, '<leader>rj','zj' ,{noremap=true,silent=false} )
+
+vim.keymap.set( {'n','v'}, '<leader>n','zr' ,{noremap=true,silent=false} )
+vim.keymap.set( {'n','v'}, '<leader>p','zm' ,{noremap=true,silent=false} )
+vim.keymap.set( {'n','v'}, '<leader>N','zR' ,{noremap=true,silent=false} )
+vim.keymap.set( {'n','v'}, '<leader>P','zM' ,{noremap=true,silent=false} )

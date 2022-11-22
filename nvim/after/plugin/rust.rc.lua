@@ -1,4 +1,7 @@
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
+--capabilities.textDocument.completion.completionItem.snippetSupport = true
 require('lspconfig').rust_analyzer.setup({
+    capabilities = capabilities,
     settings = {
         ["rust-analyzer"] = {
             imports = {
@@ -15,6 +18,7 @@ require('lspconfig').rust_analyzer.setup({
             procMacro = {
                 enable = true,
             },
+           
         },
     },
 })

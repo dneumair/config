@@ -36,6 +36,16 @@ return require('packer').startup(function(use)
 
   use 'L3MON4D3/LuaSnip'
   use 'saadparwaiz1/cmp_luasnip'
+  use 'arnamak/stay-centered.nvim'
+  use 'lukas-reineke/indent-blankline.nvim'
+  use 'simrat39/rust-tools.nvim'
+
+  -- Debugging
+  use 'nvim-lua/plenary.nvim'
+  use 'mfussenegger/nvim-dap'
+  use 'lvimuser/lsp-inlayhints.nvim'
+  use 'simrat39/inlay-hints.nvim'
+
 
 
 
