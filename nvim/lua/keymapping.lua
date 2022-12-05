@@ -6,8 +6,12 @@ vim.keymap.set({ 'n', 'v', 'x', 's' }, 'ö', ';', { noremap = true, silent = tru
 vim.keymap.set({ 'n', 'v', 'x', 's' }, 'ä', ':', { noremap = true, silent = false })
 
 -- multiline jumps should be part of the jumplist
-vim.cmd("nnoremap <expr> k (v:count > 1 ? \"m'\" . v:count : '') . 'k'")
-vim.cmd("nnoremap <expr> j (v:count > 1 ? \"m'\" . v:count : '') . 'j'")
+vim.cmd("nnoremap <expr> k (v:count > 1 ? \"m'\" . v:count : '') . 'kzz'")
+vim.cmd("nnoremap <expr> j (v:count > 1 ? \"m'\" . v:count : '') . 'jzz'")
+vim.keymap.set( 'n', '<C-d>', '<C-d>zz',{noremap=true,silent=true} ) --
+vim.keymap.set( 'n', '<C-u>', '<C-u>zz',{noremap=true,silent=true} ) --
+vim.keymap.set( 'n', '<C-o>', '<C-o>zz',{noremap=true,silent=true} ) --
+vim.keymap.set( 'n', '<C-i>', '<C-i>zz',{noremap=true,silent=true} ) --
 
 -- disable highlight on ESC
 vim.keymap.set('n', '<ESC>', ':noh<CR>', { silent = true })
@@ -38,8 +42,8 @@ vim.keymap.set( 'n','<leader>w', '<C-w>', {noremap=true,silent=false} )
 
 
 -- buffer mappings
-vim.keymap.set( 'n', '<leader>ff', ':buffers<CR>' ,{noremap=true,silent=true} )
-vim.keymap.set( 'n', '<leader>fo', ':Ex<CR>' ,{noremap=true,silent=true} )
+-- vim.keymap.set( 'n', '<leader>ff', ':buffers<CR>' ,{noremap=true,silent=true} )
+-- vim.keymap.set( 'n', '<leader>fo', ':Ex<CR>' ,{noremap=true,silent=true} )
 vim.keymap.set( 'n', '<leader>fn', ':enew<CR>' ,{noremap=true,silent=true} )
 vim.keymap.set( 'n', '<leader>fd', ':bdelete!<CR>' ,{noremap=true,silent=true} )
 vim.keymap.set( 'n', '<leader>fw', ':w<CR>' ,{noremap=true,silent=true} )
@@ -69,7 +73,6 @@ vim.keymap.set( 'n', '<leader>sh',':SplitOpenLeft ' ,{noremap=true,silent=false}
 vim.keymap.set( 'n', '<leader>sk',':SplitOpenUp ' ,{noremap=true,silent=false} )
 vim.keymap.set( 'n', '<leader>sj',':SplitOpenDown ' ,{noremap=true,silent=false} )
 
-
 -- folds
 vim.keymap.set( {'n','v'}, '<leader>rl','zo' ,{noremap=true,silent=false} )
 vim.keymap.set( {'n','v'}, '<leader>rL','zO' ,{noremap=true,silent=false} )
@@ -82,3 +85,17 @@ vim.keymap.set( {'n','v'}, '<leader>n','zr' ,{noremap=true,silent=false} )
 vim.keymap.set( {'n','v'}, '<leader>p','zm' ,{noremap=true,silent=false} )
 vim.keymap.set( {'n','v'}, '<leader>N','zR' ,{noremap=true,silent=false} )
 vim.keymap.set( {'n','v'}, '<leader>P','zM' ,{noremap=true,silent=false} )
+
+-- telescope
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>fo', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+
+vim.keymap.set('n', '<leader>ff', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fz', builtin.help_tags, {})
+
+
+vim.keymap.set('n', '<leader>o', function() require("sidebar-nvim").toggle() end , {})
+
+
+

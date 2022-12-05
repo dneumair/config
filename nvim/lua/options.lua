@@ -43,6 +43,9 @@ vim.api.nvim_create_autocmd("InsertLeave", {
     pattern ='*',
     command = "set nopaste",
 })
+
+
+
 --popup stuff
 vim.opt.winblend = 0
 vim.opt.background = 'dark'

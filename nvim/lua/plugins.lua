@@ -40,11 +40,27 @@ return require('packer').startup(function(use)
   use 'lukas-reineke/indent-blankline.nvim'
   use 'simrat39/rust-tools.nvim'
 
-  -- Debugging
+  use {'nvim-lualine/lualine.nvim',
+        requires = {'kyazdani42/nvim-web-devicons', opt = true}
+
+    }
+  use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
+
+
+  use {
+        'nvim-telescope/telescope.nvim', branch = '0.1.x',
+        requires = {{'nvim-lua/plenary.nvim'}, {'nvim-lua/popup.nvim'}}
+    }
+
+  -- Debuggin
   use 'nvim-lua/plenary.nvim'
   use 'mfussenegger/nvim-dap'
   use 'lvimuser/lsp-inlayhints.nvim'
   use 'simrat39/inlay-hints.nvim'
+
+
+  use 'sidebar-nvim/sidebar.nvim'
+
 
 
 
