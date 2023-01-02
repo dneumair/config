@@ -46,6 +46,9 @@ vim.api.nvim_create_autocmd("InsertLeave", {
 
 
 
+
+
+
 --popup stuff
 vim.opt.winblend = 0
 vim.opt.background = 'dark'
@@ -55,7 +58,12 @@ vim.opt.showtabline=2
 
 vim.opt.signcolumn='yes'
 
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldcolumn='auto'
-vim.opt.foldlevel=99
+-- vim.opt.foldmethod = "expr"
+-- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- vim.opt.foldcolumn='auto'
+-- vim.opt.foldlevel=99
+
+vim.o.foldcolumn = '1' -- '0' is not bad
+vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true

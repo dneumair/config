@@ -1,38 +1,4 @@
-require'nvim-treesitter.configs'.setup {
-    textobjects = {
-		-- select by parameter
-		select = {
-			enable = true,
-			keymaps = {
-				["ia"] = "@parameter.inner",
-				["aa"] = "@parameter.outer",
-				["if"] = "@function.inner",
-			},
-		},
-		-- move between parameters and such
-		move = {
-			enable = true,
-			set_jumps = true,
-			goto_next_start = {
-				["üm"] = "@function.outer",
-				["üa"] = "@parameter.inner",
-			},
-			goto_next_end = {
-				["üM"] = "@function.outer",
-				["üA"] = "@parameter.outer",
-			},
-			goto_previous_start = {
-				["üm"] = "@function.outer",
-				["üa"] = "@parameter.inner",
-			},
-			goto_previous_end = {
-				["üM"] = "@function.outer",
-				["üA"] = "@parameter.outer",
-			},
-		},
-	},
-
-
+require 'nvim-treesitter.configs'.setup {
     highlight = {
         enable = true,
     },
@@ -46,5 +12,5 @@ require'nvim-treesitter.configs'.setup {
     },
     indent = {
         enable = true,
-    }
+    },
 }

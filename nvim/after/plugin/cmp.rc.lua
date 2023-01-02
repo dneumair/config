@@ -20,7 +20,9 @@ cmp.setup({
         ["<Up>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s" }),
         ["<Tab>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "s" }),
         ["<S-Tab>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "s" }),
+        ['<C-Tab>'] = cmp.mapping.complete(),
         ['<C-Space>'] = cmp.mapping.complete(),
+        ['<C-f>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.abort(),
         ['<CR>'] = cmp.mapping.confirm({ 
             select = true,

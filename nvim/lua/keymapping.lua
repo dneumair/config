@@ -6,8 +6,8 @@ vim.keymap.set({ 'n', 'v', 'x', 's' }, 'ö', ';', { noremap = true, silent = tru
 vim.keymap.set({ 'n', 'v', 'x', 's' }, 'ä', ':', { noremap = true, silent = false })
 
 -- multiline jumps should be part of the jumplist
-vim.cmd("nnoremap <expr> k (v:count > 1 ? \"m'\" . v:count : '') . 'kzz'")
-vim.cmd("nnoremap <expr> j (v:count > 1 ? \"m'\" . v:count : '') . 'jzz'")
+vim.cmd("nnoremap <expr> k (v:count > 1 ? \"m'\" . v:count : '') . 'k'")
+vim.cmd("nnoremap <expr> j (v:count > 1 ? \"m'\" . v:count : '') . 'j'")
 vim.keymap.set( 'n', '<C-d>', '<C-d>zz',{noremap=true,silent=true} ) --
 vim.keymap.set( 'n', '<C-u>', '<C-u>zz',{noremap=true,silent=true} ) --
 vim.keymap.set( 'n', '<C-o>', '<C-o>zz',{noremap=true,silent=true} ) --
@@ -74,17 +74,29 @@ vim.keymap.set( 'n', '<leader>sk',':SplitOpenUp ' ,{noremap=true,silent=false} )
 vim.keymap.set( 'n', '<leader>sj',':SplitOpenDown ' ,{noremap=true,silent=false} )
 
 -- folds
-vim.keymap.set( {'n','v'}, '<leader>rl','zo' ,{noremap=true,silent=false} )
-vim.keymap.set( {'n','v'}, '<leader>rL','zO' ,{noremap=true,silent=false} )
-vim.keymap.set( {'n','v'}, '<leader>rh','zc' ,{noremap=true,silent=false} )
-vim.keymap.set( {'n','v'}, '<leader>rH','zC' ,{noremap=true,silent=false} )
-vim.keymap.set( {'n','v'}, '<leader>rk','zk' ,{noremap=true,silent=false} )
-vim.keymap.set( {'n','v'}, '<leader>rj','zj' ,{noremap=true,silent=false} )
-
-vim.keymap.set( {'n','v'}, '<leader>n','zr' ,{noremap=true,silent=false} )
-vim.keymap.set( {'n','v'}, '<leader>p','zm' ,{noremap=true,silent=false} )
-vim.keymap.set( {'n','v'}, '<leader>N','zR' ,{noremap=true,silent=false} )
-vim.keymap.set( {'n','v'}, '<leader>P','zM' ,{noremap=true,silent=false} )
+vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+vim.keymap.set('n', 'zr', require('ufo').openFoldsExceptKinds)
+vim.keymap.set('n', 'zm', require('ufo').closeFoldsWith) -- closeAllFolds == closeFoldsWith(0)
+vim.keymap.set('n', 'K', function()
+    local winid = require('ufo').peekFoldedLinesUnderCursor()
+    if not winid then
+        -- choose one of coc.nvim and nvim lsp
+        -- vim.fn.CocActionAsync('definitionHover') -- coc.nvim
+        vim.lsp.buf.hover()
+    end
+end)
+-- vim.keymap.set( {'n','v'}, '<leader>rl','zo' ,{noremap=true,silent=false} )
+-- vim.keymap.set( {'n','v'}, '<leader>rL','zO' ,{noremap=true,silent=false} )
+-- vim.keymap.set( {'n','v'}, '<leader>rh','zc' ,{noremap=true,silent=false} )
+-- vim.keymap.set( {'n','v'}, '<leader>rH','zC' ,{noremap=true,silent=false} )
+-- vim.keymap.set( {'n','v'}, '<leader>rk','zk' ,{noremap=true,silent=false} )
+-- vim.keymap.set( {'n','v'}, '<leader>rj','zj' ,{noremap=true,silent=false} )
+--
+-- vim.keymap.set( {'n','v'}, '<leader>n','zr' ,{noremap=true,silent=false} )
+-- vim.keymap.set( {'n','v'}, '<leader>p','zm' ,{noremap=true,silent=false} )
+-- vim.keymap.set( {'n','v'}, '<leader>N','zR' ,{noremap=true,silent=false} )
+-- vim.keymap.set( {'n','v'}, '<leader>P','zM' ,{noremap=true,silent=false} )
 
 -- telescope
 local builtin = require('telescope.builtin')
