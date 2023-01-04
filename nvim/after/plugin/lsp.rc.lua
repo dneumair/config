@@ -22,6 +22,13 @@ lsp.bashls.setup {
 }
 lsp.sumneko_lua.setup {
     capabilities = capabilities,
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { 'vim' }
+            }
+        }
+    }
 }
 
 

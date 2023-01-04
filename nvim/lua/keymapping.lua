@@ -74,10 +74,10 @@ vim.keymap.set( 'n', '<leader>sk',':SplitOpenUp ' ,{noremap=true,silent=false} )
 vim.keymap.set( 'n', '<leader>sj',':SplitOpenDown ' ,{noremap=true,silent=false} )
 
 -- folds
-vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
-vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
-vim.keymap.set('n', 'zr', require('ufo').openFoldsExceptKinds)
-vim.keymap.set('n', 'zm', require('ufo').closeFoldsWith) -- closeAllFolds == closeFoldsWith(0)
+vim.keymap.set('n', 'tR', require('ufo').openAllFolds)
+vim.keymap.set('n', 'tM', require('ufo').closeAllFolds)
+vim.keymap.set('n', 'tr', require('ufo').openFoldsExceptKinds)
+vim.keymap.set('n', 'tm', require('ufo').closeFoldsWith) -- closeAllFolds == closeFoldsWith(0)
 vim.keymap.set('n', 'K', function()
     local winid = require('ufo').peekFoldedLinesUnderCursor()
     if not winid then
@@ -86,17 +86,13 @@ vim.keymap.set('n', 'K', function()
         vim.lsp.buf.hover()
     end
 end)
--- vim.keymap.set( {'n','v'}, '<leader>rl','zo' ,{noremap=true,silent=false} )
--- vim.keymap.set( {'n','v'}, '<leader>rL','zO' ,{noremap=true,silent=false} )
--- vim.keymap.set( {'n','v'}, '<leader>rh','zc' ,{noremap=true,silent=false} )
--- vim.keymap.set( {'n','v'}, '<leader>rH','zC' ,{noremap=true,silent=false} )
--- vim.keymap.set( {'n','v'}, '<leader>rk','zk' ,{noremap=true,silent=false} )
--- vim.keymap.set( {'n','v'}, '<leader>rj','zj' ,{noremap=true,silent=false} )
+vim.keymap.set( {'n','v'}, 'tl','zo' ,{noremap=true,silent=false} )
+vim.keymap.set( {'n','v'}, 'tL','zO' ,{noremap=true,silent=false} )
+vim.keymap.set( {'n','v'}, 'th','zc' ,{noremap=true,silent=false} )
+vim.keymap.set( {'n','v'}, 'tH','zC' ,{noremap=true,silent=false} )
+vim.keymap.set( {'n','v'}, 'tk','zk' ,{noremap=true,silent=false} )
+vim.keymap.set( {'n','v'}, 'tj','zj' ,{noremap=true,silent=false} )
 --
--- vim.keymap.set( {'n','v'}, '<leader>n','zr' ,{noremap=true,silent=false} )
--- vim.keymap.set( {'n','v'}, '<leader>p','zm' ,{noremap=true,silent=false} )
--- vim.keymap.set( {'n','v'}, '<leader>N','zR' ,{noremap=true,silent=false} )
--- vim.keymap.set( {'n','v'}, '<leader>P','zM' ,{noremap=true,silent=false} )
 
 -- telescope
 local builtin = require('telescope.builtin')
