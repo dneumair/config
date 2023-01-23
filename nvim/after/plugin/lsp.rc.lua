@@ -6,9 +6,9 @@ end
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-require'lspconfig'.emmet_ls.setup {
+require 'lspconfig'.emmet_ls.setup {
     capabilities = capabilities,
-    filetype = {'html', 'css', 'scss', 'sass', 'less' },
+    filetype = { 'html', 'css', 'scss', 'sass', 'less' },
     init_options = {
         html = {
             options = {
@@ -18,11 +18,14 @@ require'lspconfig'.emmet_ls.setup {
     },
 }
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-capabilities.textDocument.foldingRange = {
-    dynamicRegistration = false,
-    lineFoldingOnly = true
-}
+local loaded, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if loaded then
+    capabilities = require('cmp_nvim_lsp').default_capabilities()
+    capabilities.textDocument.foldingRange = {
+        dynamicRegistration = false,
+        lineFoldingOnly = true
+    }
+end
 
 lsp.html.setup {
     capabilities = capabilities
