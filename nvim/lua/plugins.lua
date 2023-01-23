@@ -34,7 +34,7 @@ return require('packer').startup(function(use)
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/cmp-cmdline'
 
-    use 'L3MON4D3/LuaSnip'
+    use {'L3MON4D3/LuaSnip', after = 'nvim-cmp' }
     use 'saadparwaiz1/cmp_luasnip'
     use 'arnamak/stay-centered.nvim'
     use 'lukas-reineke/indent-blankline.nvim'

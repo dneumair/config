@@ -5,10 +5,10 @@ capabilities.textDocument.foldingRange = {
     lineFoldingOnly = true
 }
 
-lsp.html.setup{
+lsp.html.setup {
     capabilities = capabilities
 }
-lsp.terraformls.setup{
+lsp.terraformls.setup {
     capabilities = capabilities,
 }
 lsp.cssls.setup {
@@ -20,6 +20,24 @@ lsp.clangd.setup {
 lsp.bashls.setup {
     capabilities = capabilities,
 }
+lsp.yamlls.setup {
+    capabilities = capabilities,
+    settings = {
+        yaml = {
+            trace = {
+                server = "verbose"
+            },
+            schemas = {
+                kubernetes = "/*.yaml"
+            },
+            schemaDownload = {
+                enable = true,
+            },
+        },
+    },
+}
+
+
 lsp.sumneko_lua.setup {
     capabilities = capabilities,
     settings = {
@@ -37,18 +55,18 @@ local util = require "lspconfig/util"
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 lsp.gopls.setup {
     capabilities = capabilities,
-    cmd = {"gopls", "serve"},
-    filetypes = {"go", "gomod"},
+    cmd = { "gopls", "serve" },
+    filetypes = { "go", "gomod" },
     root_dir = util.root_pattern("go.work", "go.mod", ".git"),
     settings = {
-      gopls = {
-        analyses = {
-          experimentalPostfixCompletions = true,
-          unusedparams = true,
-          shadow = true,
+        gopls = {
+            analyses = {
+                experimentalPostfixCompletions = true,
+                unusedparams = true,
+                shadow = true,
+            },
+            staticcheck = true,
         },
-        staticcheck = true,
-      },
     },
 }
 
