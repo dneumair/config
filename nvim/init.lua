@@ -1,4 +1,4 @@
-require('options')
 require('plugins')
-require('keymapping')
+require('options')
 require('splitting')
+require('keymapping')

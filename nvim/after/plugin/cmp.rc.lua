@@ -1,4 +1,8 @@
-local cmp = require'cmp'
+local loaded, cmp = pcall(require,'cmp')
+if (not loaded) then
+    return
+end
+
 cmp.setup({
     snippet = {
         -- REQUIRED - you must specify a snippet engine
@@ -50,7 +54,6 @@ cmp.setup.filetype('gitcommit', {
         { name = 'buffer' },
     })
 })
-
 
 
 -- disable the fucking css snippets

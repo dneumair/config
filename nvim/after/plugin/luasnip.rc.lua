@@ -1,2 +1,4 @@
-local ls = require('luasnip')
-ls.setup({})
+local loaded, ls = pcall(require, "luasnip") 
+if loaded then
+    ls.setup{}
+end
