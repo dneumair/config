@@ -1,7 +1,7 @@
 local loaded, ts_conf = pcall(require,"nvim-treesitter.configs")
 if loaded then
     ts_conf.setup {
-    ensure_installed = {"vim", "c", "yaml", "json", "lua", "rust", "go", "gomod","gitignore", "gitcommit"},
+    ensure_installed = {"vim", "c", "yaml", "json", "lua", "rust", "go", "gomod"},
     highlight = {
         enable = true,
     },
