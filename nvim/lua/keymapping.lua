@@ -23,6 +23,8 @@ vim.keymap.set('i', '<ESC>', '<ESC>`^', { silent = true })
 -- LSP mappings
 vim.keymap.set('n', 'gk', vim.lsp.buf.hover, { noremap = true, silent = true }) --
 vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { noremap = true, silent = true }) --
+vim.keymap.set('n', '<leader>gg', vim.diagnostic.open_float, { noremap = true, silent = true }) --
+vim.keymap.set('n', 'gj', vim.lsp.buf.code_action, { noremap = true, silent = true }) --
 vim.keymap.set('n', 'gn', vim.diagnostic.goto_next, { noremap = true, silent = true }) --
 vim.keymap.set('n', 'gp', vim.diagnostic.goto_prev, { noremap = true, silent = true }) --
 vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { noremap = true, silent = true }) --
@@ -33,7 +35,6 @@ vim.keymap.set('n', '<leader>D', vim.lsp.buf.type_definition, bufopts)
 vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
 vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
 vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { noremap = true, silent = true }) --
-vim.keymap.set('n', '<leader>cf', vim.lsp.buf.format, { noremap = true, silent = true }) --
 
 vim.keymap.set('n', '<leader>cc', vim.lsp.buf.format, { noremap = true, silent = true }) --
 
@@ -87,22 +88,29 @@ if ufo_loaded then
         end
     end)
 end
-
 vim.keymap.set({ 'n', 'v' }, 'tl', 'zo', { noremap = true, silent = false })
-vim.keymap.set({ 'n', 'v' }, 'tL', 'zO', { noremap = true, silent = false })
+vim.keymap.set({ 'n', 'v' }, 'tL', 'zCzOzt', { noremap = true, silent = false })
 vim.keymap.set({ 'n', 'v' }, 'th', 'zc', { noremap = true, silent = false })
-vim.keymap.set({ 'n', 'v' }, 'tH', 'zC', { noremap = true, silent = false })
+vim.keymap.set({ 'n', 'v' }, 'tH', 'zCzz', { noremap = true, silent = false })
 vim.keymap.set({ 'n', 'v' }, 'tk', 'zk', { noremap = true, silent = false })
 vim.keymap.set({ 'n', 'v' }, 'tj', 'zj', { noremap = true, silent = false })
 --
 
 -- telescope
-local has_telescope, builtin = pcall(require,'telescope.builtin')
+local has_telescope, telescope_builtin = pcall(require, 'telescope.builtin')
 if has_telescope then
-    vim.keymap.set('n', '<leader>fo', builtin.find_files, {})
-    vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-    vim.keymap.set('n', '<leader>ff', builtin.buffers, {})
-    vim.keymap.set('n', '<leader>fz', builtin.help_tags, {})
+    vim.keymap.set('n', '<leader>fu', ":Telescope<CR>", {})
+    vim.keymap.set('n', '<leader>fo', telescope_builtin.find_files, {})
+    vim.keymap.set('n', '<leader>fg', telescope_builtin.live_grep, {})
+    vim.keymap.set('n', '<leader>ff', telescope_builtin.buffers, {})
+    vim.keymap.set('n', '<leader>fz', telescope_builtin.help_tags, {})
+    vim.keymap.set('n', '<leader>fm', telescope_builtin.lsp_document_symbols, {})
+    vim.keymap.set('n', '<leader>fn', telescope_builtin.lsp_workspace_symbols, {})
+    vim.keymap.set('n', '<leader>fi', telescope_builtin.git_files, {})
 end
 
-vim.keymap.set('n', '<leader>o', function() require("sidebar-nvim").toggle() end, {})
+local has_fterm, fterm = pcall(require, 'FTerm')
+if has_fterm then
+    vim.keymap.set('n', '<F2>', '<CMD>lua require("FTerm").toggle()<CR>')
+    vim.keymap.set('t', '<F2>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
+end

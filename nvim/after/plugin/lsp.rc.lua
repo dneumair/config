@@ -60,7 +60,7 @@ lsp.yamlls.setup {
 }
 
 
-lsp.sumneko_lua.setup {
+lsp.lua_ls.setup {
     capabilities = capabilities,
     settings = {
         Lua = {

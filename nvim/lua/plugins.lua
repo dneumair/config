@@ -50,6 +50,8 @@ return require('packer').startup(function(use)
     use 'sidebar-nvim/sidebar.nvim'
     use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
     use { 'akinsho/toggleterm.nvim', tag = '*' }
+    use 'voldikss/vim-floaterm'
+    use "numToStr/FTerm.nvim"
 
     if packer_bootstrap then
         require('packer').sync()
