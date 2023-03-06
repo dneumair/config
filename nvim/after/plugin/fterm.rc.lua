@@ -4,8 +4,8 @@ if (not loaded) then
 end
 
 require'FTerm'.setup({
-    border = 'double',
     dimensions  = {
+        borders = 'single',
         height = 0.9,
         width = 0.9,
     },

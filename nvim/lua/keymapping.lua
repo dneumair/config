@@ -111,6 +111,10 @@ end
 
 local has_fterm, fterm = pcall(require, 'FTerm')
 if has_fterm then
-    vim.keymap.set('n', '<F2>', '<CMD>lua require("FTerm").toggle()<CR>')
-    vim.keymap.set('t', '<F2>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
+    vim.keymap.set('n', '<A-i>', '<CMD>lua require("FTerm").toggle()<CR>')
+    vim.keymap.set('t', '<A-i>', '<C-\\><C-n><CMD>lua require("FTerm").toggle()<CR>')
 end
+
+
+
+

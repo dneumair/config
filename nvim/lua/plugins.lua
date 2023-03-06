@@ -12,9 +12,6 @@ end
 local packer_bootstrap = ensure_packer()
 
 
-
-local packer_bootstrap = ensure_packer()
-
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
     use { 'akinsho/flutter-tools.nvim', requires = 'nvim-lua/plenary.nvim' }
@@ -23,7 +20,6 @@ return require('packer').startup(function(use)
     use 'williamboman/mason-lspconfig.nvim'
     use 'neovim/nvim-lspconfig'
     use 'nvim-treesitter/nvim-treesitter'
-    use 'terrortylor/nvim-comment'
     use 'hrsh7th/nvim-cmp'
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/cmp-buffer'
@@ -34,6 +30,7 @@ return require('packer').startup(function(use)
     use 'arnamak/stay-centered.nvim'
     use 'lukas-reineke/indent-blankline.nvim'
     use 'simrat39/rust-tools.nvim'
+    use 'simrat39/inlay-hints.nvim'
     use { 'nvim-lualine/lualine.nvim',
         requires = { 'kyazdani42/nvim-web-devicons', opt = true }
 
@@ -45,13 +42,12 @@ return require('packer').startup(function(use)
     -- Debuggin
     use 'nvim-lua/plenary.nvim'
     use 'mfussenegger/nvim-dap'
-    use 'lvimuser/lsp-inlayhints.nvim'
-    use 'simrat39/inlay-hints.nvim'
     use 'sidebar-nvim/sidebar.nvim'
     use { 'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async' }
     use { 'akinsho/toggleterm.nvim', tag = '*' }
     use 'voldikss/vim-floaterm'
     use "numToStr/FTerm.nvim"
+    use "numToStr/comment.nvim"
 
     if packer_bootstrap then
         require('packer').sync()

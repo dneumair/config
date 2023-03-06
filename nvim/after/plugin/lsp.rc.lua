@@ -74,8 +74,13 @@ lsp.lua_ls.setup {
 
 local util = require "lspconfig/util"
 
+local ih = require("inlay-hints")
+
 capabilities.textDocument.completion.completionItem.snippetSupport = true
-lsp.gopls.setup {
+lsp.gopls.setup({
+    on_attach = function(c, b)
+        ih.on_attach(c, b)
+    end,
     capabilities = capabilities,
     cmd = { "gopls", "serve" },
     filetypes = { "go", "gomod" },
@@ -88,29 +93,40 @@ lsp.gopls.setup {
                 shadow = true,
             },
             staticcheck = true,
-        },
-    },
-}
 
-lsp.rust_analyzer.setup({
-    capabilities = capabilities,
-    root_dir = lsp.util.root_pattern('.git'),
-    settings = {
-        ["rust-analyzer"] = {
-            imports = {
-                granularity = {
-                    group = "module",
-                },
-                prefix = "self",
-            },
-            cargo = {
-                buildScripts = {
-                    enable = true,
-                },
-            },
-            procMacro = {
-                enable = true,
-            },
+            hints = {
+                assignVariableTypes = true,
+                compositeLiteralFields = true,
+                compositeLiteralTypes = true,
+                constantValues = true,
+                functionTypeParameters = true,
+                parameterNames = true,
+                rangeVariableTypes = true,
+            }
         },
     },
 })
+
+
+-- lsp.rust_analyzer.setup({
+--     capabilities = capabilities,
+--     root_dir = lsp.util.root_pattern('.git'),
+--     settings = {
+--         ["rust-analyzer"] = {
+--             imports = {
+--                 granularity = {
+--                     group = "module",
+--                 },
+--                 prefix = "self",
+--             },
+--             cargo = {
+--                 buildScripts = {
+--                     enable = true,
+--                 },
+--             },
+--             procMacro = {
+--                 enable = true,
+--             },
+--         },
+--     },
+-- })
