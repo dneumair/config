@@ -1,6 +1,9 @@
 -- leader key to space
 vim.keymap.set('', '<Space>', '<Leader>', { remap = true, silent = false })
 
+
+vim.keymap.set('n', '<leader>fö', require'telescope.builtin'.commands,{noremap = true, silent = true})
+
 -- some basic remaps for german quertz keyboard
 vim.keymap.set({ 'n', 'v', 'x', 's' }, 'ö', ';', { noremap = true, silent = true })
 vim.keymap.set({ 'n', 'v', 'x', 's' }, 'ä', ':', { noremap = true, silent = false })
